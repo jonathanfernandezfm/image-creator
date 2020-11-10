@@ -33,11 +33,21 @@ app.get('/create-image.png', async (req, res) => {
   let assets = achievement.assets;
   let icon_url;
 
+  if(!assets){
+    res.status(404).json({status: 404, error: 'Bad id', message: 'Wrong ID'})
+    return;
+  }
+
   assets.forEach(item => {
     if(item.key === 'icon') {
       icon_url = item.value;
     }
   })
+
+  if(!icon_url) {
+    res.status(404).json({status: 404, error: 'Bad id', message: 'Wrong ID'})
+    return;
+  }
 
   loadImage(icon_url).then(image => {
     context.drawImage(image, 25, 58, 175, 175)
