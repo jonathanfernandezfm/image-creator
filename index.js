@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 })
 
-app.get('/create-image', async (req, res) => {
+app.get('/create-image.png', async (req, res) => {
   const id = req.query.id;
   const text = req.query.text;
   const date = req.query.date;
@@ -29,7 +29,7 @@ app.get('/create-image', async (req, res) => {
     return;
   }
 
-  let achievement = await wowClient.getAchievementMedia(14068);
+  let achievement = await wowClient.getAchievementMedia(id);
   let assets = achievement.assets;
   let icon_url;
 
@@ -62,6 +62,7 @@ app.get('/create-image', async (req, res) => {
       context.fillText(`${date}`, WIDTH/2+30, 192)
       
       const buffer = canvas.toBuffer('image/png');
+      res.contentType('image/png')
       res.write(buffer);
       res.end();
     })
