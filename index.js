@@ -20,6 +20,10 @@ context.textAlign = 'center'
 context.textBaseline = 'top'
 context.fillStyle = '#3574d4'
 
+app.get('/', (req, res) => {
+  res.send('Hello World');
+})
+
 app.get('/create-image', async (req, res) => {
   const id = req.query.id;
   const text = req.query.text;
