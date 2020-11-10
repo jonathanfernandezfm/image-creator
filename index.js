@@ -15,11 +15,6 @@ const HEIGHT = 290
 const canvas = createCanvas(WIDTH, HEIGHT)
 const context = canvas.getContext('2d')
 
-context.font = 'bold 70pt Menlo'
-context.textAlign = 'center'
-context.textBaseline = 'top'
-context.fillStyle = '#3574d4'
-
 app.get('/', (req, res) => {
   res.send('Hello World');
 })
@@ -43,29 +38,28 @@ app.get('/create-image', async (req, res) => {
       icon_url = item.value;
     }
   })
-  context.fillStyle = '#000'
-  context.font = 'bold 30pt Menlo'
-  context.fillText(`Mythic: N'Zoth killed`, 200, 50)
 
-  loadImage('./assets/achieve-back.png').then(image => {
-    context.drawImage(image, 0, 0, WIDTH, HEIGHT)
-
-    loadImage(icon_url).then(image1 => {
-      context.drawImage(image1, 28, 63, 160, 160)
+  loadImage(icon_url).then(image => {
+    context.drawImage(image, 25, 58, 175, 175)
+    
+    loadImage('./assets/achieve-back.png').then(image1 => {
+      context.drawImage(image1, 0, 0, WIDTH, HEIGHT)
       
+      context.textAlign = 'center'
+      context.textBaseline = 'top'
       context.fillStyle = '#fff'
-      context.font = '30pt Cambria Math'
+      context.font = '30pt Arial'
       context.shadowColor="black";
       context.shadowBlur=2;
       context.lineWidth=2;
       context.shadowOffsetX = 3;
       context.shadowOffsetY = 3;
-      context.fillText(`${text}`, WIDTH/2+30, 30)
+      context.fillText(`${text}`, WIDTH/2+30, 120)
 
-      context.font = '15pt Cambria Math'
+      context.font = '15pt Arial'
       context.shadowColor = 'transparent';
       context.fillStyle = '#222'
-      context.fillText(`${date}`, WIDTH/2+30, 148)
+      context.fillText(`${date}`, WIDTH/2+30, 192)
       
       const buffer = canvas.toBuffer('image/png');
       res.write(buffer);
@@ -74,6 +68,6 @@ app.get('/create-image', async (req, res) => {
   })
 })
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`App started`)
 })
