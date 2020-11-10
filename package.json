@@ -1,0 +1,27 @@
+{
+  "name": "achievement-image-creator",
+  "version": "1.0.0",
+  "description": "World of Warcraft achievement images creator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "wow",
+    "world-of-warcraft",
+    "achievements"
+  ],
+  "author": "Jonathan 'Poak' Fernández",
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "^2.6.1",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
