@@ -73,12 +73,12 @@ app.get('/create-image.png', async (req, res) => {
   context.lineWidth=2;
   context.shadowOffsetX = 3;
   context.shadowOffsetY = 3;
-  context.fillText(`${text}`, WIDTH/2+30, 120)
+  context.fillText(`${text}`, WIDTH/2+30, 128)
 
   context.font = '24pt FrizQuadrata'
   context.shadowColor = 'transparent';
   context.fillStyle = '#111'
-  context.fillText(`${date}`, WIDTH/2+30, 188)
+  context.fillText(`${date}`, WIDTH/2+30, 196)
   
   const buffer = canvas.toBuffer('image/png');
   res.contentType('image/png')
